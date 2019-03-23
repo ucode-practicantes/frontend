@@ -16,19 +16,37 @@ export class AppComponent {
     console.log('User record starts');
     this.exerciseService.activeRecord();
     currentScreenAction = ScreenAction.swipeUp
+    speech.speak({
+      text: 'Record starts.'
+    }) 
   }
   onSwipeDown() {
     console.log('User record ends');
     this.exerciseService.desactiveRecord();
     currentScreenAction = ScreenAction.swipeDown
+    speech.speak({
+      text: 'Record finishes.'
+    })
+  }
+  onPress(){
+    console.log('User presses');
+    currentScreenAction = ScreenAction.press
+    speech.speak({
+      text: 'Now you are in the help menu. \
+      To start recording, swipe up your finger on the screen. \
+      To finish recording, swipe down your finger on the screen.'
+      //TODO TUTORIAL
+    })  
   }
 }
 
 export enum ScreenAction {
   stop,
   swipeUp,
-  swipeDown
+  swipeDown,
+  press
 }
+
 
 var currentScreenAction:ScreenAction = ScreenAction.stop;
 

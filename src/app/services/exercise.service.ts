@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ExerciseService {
   recordStatus: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  presentationDone:boolean = false;
 
   constructor() { }
 
@@ -16,4 +17,9 @@ export class ExerciseService {
   desactiveRecord() {
     this.recordStatus.next(false);
   }
+
+  makePresentation(){
+    this.presentationDone = true;
+  }
+
 }
