@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { speech, AppComponent } from '../app.component'
 import { ExerciseService } from '../services/exercise.service';
+import { MlServiceService } from '../ml-service.service';
 
 
 @Component({
@@ -9,14 +10,14 @@ import { ExerciseService } from '../services/exercise.service';
   templateUrl: './exercise.component.html',
   styleUrls: ['./exercise.component.scss']
 })
-export class ExerciseComponent extends AppComponent implements OnInit {
+export class ExerciseComponent implements OnInit {
   hour: number = 0;
   minute: number = 0;
   second: number = 0;
 
   interval;
 
-  constructor(public exerciseService: ExerciseService) { super(exerciseService); }
+  constructor(public exerciseService: ExerciseService) { }
 
   onSwipeUp() {
     console.log('Say time');
@@ -65,4 +66,12 @@ export class ExerciseComponent extends AppComponent implements OnInit {
     clearInterval(this.interval);
   }
 
+  onSwipeDown() {
+    console.log('User record ends');
+    this.exerciseService.desactiveRecord();
+    /*currentScreenAction = ScreenAction.swipeDown
+    speech.speak({
+      text: 'Record finishes.'
+    })*/
+  }
 }

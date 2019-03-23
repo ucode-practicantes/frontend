@@ -1,4 +1,7 @@
-<app-home *ngIf="!exerciseStatus"></app-home>
-<app-exercise *ngIf="exerciseStatus"></app-exercise>
-<img src="../../assets/images/soccer-player.svg" alt="soccer-player" style="max-height: 100em; position:absolute; bottom:0; left:0;">
-<app-info class="info-section"></app-info>
+<div style="z-index:-1">
+    <app-home *ngIf="!exerciseStatus" style="z-index:5"></app-home>
+    <app-exercise *ngIf="exerciseStatus" style="z-index:5"></app-exercise>
+    <img class="unselect" src="../../assets/images/soccer-player.svg" alt="soccer-player" style="max-height: 100em; position:absolute; bottom:0; left:0; z-index:2">
+    <app-info class="info-section"></app-info>
+</div>
+

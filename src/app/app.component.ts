@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ExerciseService } from './services/exercise.service';
 import Speech from 'speak-tts';
+import { MlServiceService } from './ml-service.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,12 @@ import Speech from 'speak-tts';
   styleUrls: ['./app.component.scss']
 })
 
-export abstract class AppComponent {
+export class AppComponent {
 
-  constructor(public exerciseService: ExerciseService) {}
-
-  abstract onSwipeUp();
+  constructor(
+    public exerciseService: ExerciseService,
+    private mlService: MlServiceService
+    ) {}
 
   onSwipeDown() {
     console.log('User record ends');
@@ -22,6 +24,10 @@ export abstract class AppComponent {
       text: 'Record finishes.'
     })
   }
+  public uploadData() {
+    this.mlService.predict([]);
+  }
+
   onPress(){
     console.log('User presses');
     currentScreenAction = ScreenAction.press
@@ -40,7 +46,6 @@ export enum ScreenAction {
   swipeDown,
   press
 }
-
 
 var currentScreenAction:ScreenAction = ScreenAction.stop;
 
