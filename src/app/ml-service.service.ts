@@ -21,7 +21,7 @@ export class MlServiceService {
     return this.httpClient.get(`${this.API_URL}/`);
   }
 
-  public predict(data: number[]) {
+  public uploadPos() {
     navigator.geolocation.getCurrentPosition((pos: Position) => {
       this.afStore.collection("data/" + this.uuid + "/uploads").add({
         pos: {
