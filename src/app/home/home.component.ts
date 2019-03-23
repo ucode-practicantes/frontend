@@ -11,21 +11,14 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngAfterViewInit(){
     if(speech.hasBrowserSupport()) { // returns a boolean
       console.log("speech synthesis supported")
       speech.speak({
-        text: 'Hello, welcome to XXXAPP. Do you know how to use me? Scroll up in affirmative case. Scroll down otherwise.',
-      })
-      var currentScreenAction
-      do{
-        currentScreenAction = getCurrentScreenAction()
-      }while(currentScreenAction !== ScreenAction.swipeUp && currentScreenAction !== ScreenAction.swipeDown);
-      if(currentScreenAction === ScreenAction.swipeUp){
-        //TODO: RES DE TUTORIALS
-      }else if(currentScreenAction === ScreenAction.swipeDown){
-        //TODO: TUTORIAL HERE
-      }
+        text: 'Hello, welcome to XXXAPP. Do you know how to use me? If you have any doubt, mantain pressed for 3 seconds. ',
+      })     
       
     }else{
       console.log("speech synthesis supported")
