@@ -12,13 +12,15 @@ import { MenuComponent } from './menu/menu.component';
 
 // Configs
 import { HammerConfig } from '../assets/config/hammer-config';
+import { ExerciseComponent } from './exercise/exercise.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     InfoComponent,
-    MenuComponent
+    MenuComponent,
+    ExerciseComponent
   ],
   imports: [
     BrowserModule,

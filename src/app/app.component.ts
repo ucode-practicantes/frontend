@@ -9,4 +9,7 @@ export class AppComponent {
   onSwipeUp() {
     console.log('User record starts');
   }
+  onSwipeDown() {
+    console.log('User record starts');
+  }
 }
