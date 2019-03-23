@@ -10,9 +10,11 @@ import Speech from 'speak-tts';
 export class AppComponent {
   onSwipeUp() {
     console.log('SWIPE UP');
+    currentScreenAction = ScreenAction.swipeUp
   }
   onSwipeDown() {
     console.log('SWIPE DOWN');
+    currentScreenAction = ScreenAction.swipeUp
   }
 }
 
@@ -22,10 +24,12 @@ export enum ScreenAction {
   swipeDown
 }
 
-export var currentScreenAction:ScreenAction = ScreenAction.stop;
+var currentScreenAction:ScreenAction = ScreenAction.stop;
 
-export function setCurrentScreenAction(action:ScreenAction){
-  //currentScreenAction = action;
+export function getCurrentScreenAction(){
+  const tmp = currentScreenAction
+  currentScreenAction = ScreenAction.stop
+  return tmp;
 }
 
 export const speech = new Speech()

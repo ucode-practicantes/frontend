@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {speech, AppComponent, currentScreenAction, ScreenAction, setCurrentScreenAction} from '../app.component'
+import {speech, AppComponent, ScreenAction, getCurrentScreenAction} from '../app.component'
 
 
 @Component({
@@ -17,6 +17,15 @@ export class HomeComponent implements OnInit {
       speech.speak({
         text: 'Hello, welcome to XXXAPP. Do you know how to use me? Scroll up in affirmative case. Scroll down otherwise.',
       })
+      var currentScreenAction
+      do{
+        currentScreenAction = getCurrentScreenAction()
+      }while(currentScreenAction !== ScreenAction.swipeUp && currentScreenAction !== ScreenAction.swipeDown);
+      if(currentScreenAction === ScreenAction.swipeUp){
+        //TODO: RES DE TUTORIALS
+      }else if(currentScreenAction === ScreenAction.swipeDown){
+        //TODO: TUTORIAL HERE
+      }
       
     }else{
       console.log("speech synthesis supported")
