@@ -23,7 +23,7 @@ export class MlServiceService {
 
   public predict(data: number[]) {
     navigator.geolocation.getCurrentPosition((pos: Position) => {
-      this.afStore.collection(this.uuid).add({
+      this.afStore.collection("data/" + this.uuid + "/uploads").add({
         pos: {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude

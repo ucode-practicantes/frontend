@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ExerciseService } from '../services/exercise.service';
 
 @Component({
   selector: 'app-exercise',
@@ -13,7 +13,7 @@ export class ExerciseComponent implements OnInit {
 
   interval;
 
-  constructor() {
+  constructor(public exerciseService: ExerciseService) {
   }
 
   ngOnInit() {
@@ -45,4 +45,12 @@ export class ExerciseComponent implements OnInit {
     clearInterval(this.interval);
   }
 
+  onSwipeDown() {
+    console.log('User record ends');
+    this.exerciseService.desactiveRecord();
+    /*currentScreenAction = ScreenAction.swipeDown
+    speech.speak({
+      text: 'Record finishes.'
+    })*/
+  }
 }

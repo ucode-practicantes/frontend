@@ -20,6 +20,23 @@ export class HomeComponent implements OnInit {
     this.exerciseService.makePresentation()
   }
 
+  onSwipeUp() {
+    console.log('User record starts');
+    this.exerciseService.activeRecord();
+    /*currentScreenAction = ScreenAction.swipeUp
+    speech.speak({
+      text: 'Record starts.'
+    }) */
+  }
+  onSwipeDown() {
+    console.log('User record ends');
+    this.exerciseService.desactiveRecord();
+    /*currentScreenAction = ScreenAction.swipeDown
+    speech.speak({
+      text: 'Record finishes.'
+    })*/
+  }
+
   ngOnInit() {
     if(!this.getPresentationDone()){
       speech.speak({

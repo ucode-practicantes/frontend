@@ -20,22 +20,6 @@ export class AppComponent {
     this.mlService.predict([]);
   }
 
-  onSwipeUp() {
-    console.log('User record starts');
-    this.exerciseService.activeRecord();
-    currentScreenAction = ScreenAction.swipeUp
-    speech.speak({
-      text: 'Record starts.'
-    }) 
-  }
-  onSwipeDown() {
-    console.log('User record ends');
-    this.exerciseService.desactiveRecord();
-    currentScreenAction = ScreenAction.swipeDown
-    speech.speak({
-      text: 'Record finishes.'
-    })
-  }
   onPress(){
     console.log('User presses');
     currentScreenAction = ScreenAction.press
