@@ -16,21 +16,13 @@ export class AppComponent {
     private mlService: MlServiceService
     ) {}
 
-  onSwipeDown() {
-    console.log('User record ends');
-    this.exerciseService.desactiveRecord();
-    currentScreenAction = ScreenAction.swipeDown
-    speech.speak({
-      text: 'Record finishes.'
-    })
-  }
   public uploadData() {
     this.mlService.predict([]);
   }
 
   onPress(){
+    speech.cancel();
     console.log('User presses');
-    currentScreenAction = ScreenAction.press
     speech.speak({
       text: 'Now you are in the help menu. \
       To start recording, swipe up your finger on the screen. \
@@ -38,21 +30,6 @@ export class AppComponent {
       //TODO TUTORIAL
     })  
   }
-}
-
-export enum ScreenAction {
-  stop,
-  swipeUp,
-  swipeDown,
-  press
-}
-
-var currentScreenAction:ScreenAction = ScreenAction.stop;
-
-export function getCurrentScreenAction(){
-  const tmp = currentScreenAction
-  currentScreenAction = ScreenAction.stop
-  return tmp;
 }
 
 export const speech = new Speech()

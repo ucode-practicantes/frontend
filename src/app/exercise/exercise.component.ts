@@ -19,7 +19,8 @@ export class ExerciseComponent implements OnInit {
 
   constructor(public exerciseService: ExerciseService) { }
 
-  onSwipeUp() {
+  onSwipeUp() {    
+    speech.cancel();
     console.log('Say time');
     var sentence:String = 'Your are playing for ';
       if(this.hour > 0){
@@ -67,11 +68,11 @@ export class ExerciseComponent implements OnInit {
   }
 
   onSwipeDown() {
+    speech.cancel();
     console.log('User record ends');
-    this.exerciseService.desactiveRecord();
-    /*currentScreenAction = ScreenAction.swipeDown
     speech.speak({
       text: 'Record finishes.'
-    })*/
+    })
+    this.exerciseService.desactiveRecord();
   }
 }

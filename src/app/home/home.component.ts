@@ -22,24 +22,17 @@ export class HomeComponent implements OnInit {
   }
 
   onSwipeUp() {
+    speech.cancel();
     console.log('User record starts');
     this.exerciseService.activeRecord();
-    /*currentScreenAction = ScreenAction.swipeUp
     speech.speak({
       text: 'Record starts.'
-    }) */
-  }
-  onSwipeDown() {
-    console.log('User record ends');
-    this.exerciseService.desactiveRecord();
-    /*currentScreenAction = ScreenAction.swipeDown
-    speech.speak({
-      text: 'Record finishes.'
-    })*/
+    }) 
   }
 
   ngOnInit() {
     if(!this.getPresentationDone()){
+      speech.cancel();
       speech.speak({
         text: 'Hello, welcome to XXXAPP. Do you know how to use me? If you have any doubt, mantain pressed for 3 seconds. ',
       });  
