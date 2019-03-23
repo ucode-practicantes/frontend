@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
     if(speech.hasBrowserSupport()) { // returns a boolean
       console.log("speech synthesis supported")
       speech.speak({
-
         text: 'Hello, welcome to XXXAPP. Do you know how to use me? If you have any doubt, mantain pressed for 3 seconds. ',
       })     
 
