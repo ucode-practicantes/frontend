@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ExerciseService } from './services/exercise.service';
-import Speech from 'speak-tts';
+import { HelpService } from './services/help.service';
 import { MlServiceService } from './ml-service.service';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { ModalComponent } from './modal/modal.component';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +13,13 @@ import { MlServiceService } from './ml-service.service';
 
 export class AppComponent {
 
+  fileNameDialogRef: MatDialogRef<ModalComponent>;
+
   constructor(
     public exerciseService: ExerciseService,
-    private mlService: MlServiceService
+    public helpService: HelpService,
+    private mlService: MlServiceService,
+    private dialog: MatDialog
     ) {}
 
   public uploadData() {
@@ -21,42 +27,11 @@ export class AppComponent {
   }
 
   onPress(){
-    helpDisplayed = true;
-    cancelSpeech();
     console.log('User presses');
-    speech.speak({
-      text: 'Now you are in the help menu. \
-      To start recording, swipe up your finger on the screen. \
-      To finish recording, swipe down your finger on the screen.'
-      //TODO TUTORIAL
-    })  
+    this.helpService.cancelSpeech();
+    this.helpService.displayHelp()
+    this.fileNameDialogRef = this.dialog.open(ModalComponent, {
+      hasBackdrop: false
+    });
   }
 }
-
-export var helpDisplayed = false;
-
-export function cancelSpeech(){
-  speech.cancel();
-  helpDisplayed = false;
-}
-
-export const speech = new Speech()
-speech.init(
-  {
-    'onVoicesLoaded': (data) => {console.log('voices', data.voices)},
-    'volume': 1,
-    'lang': 'en-GB',
-    'rate': 1,
-    'pitch': 1,
-    'voice':'Microsoft Zira Desktop - English (United States)',
-    'splitSentences': true,
-
-  }
-).then((data) => {
-  // The "data" object contains the list of available voices and the voice synthesis params
-  console.log("Speech is ready, voices are available", data)
-}).catch(e => {
-    console.error("An error occured while initializing : ", e)
-})
-
-
