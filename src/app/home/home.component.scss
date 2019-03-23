@@ -9,3 +9,15 @@
 .full-body {
   height: 100vh;
 }
+
+.unselect {
+  pointer-events: none;
+}
+
+.title {
+  padding-top: 0;
+}
+
+.front-title-text {
+  font-size: 40px;
+}

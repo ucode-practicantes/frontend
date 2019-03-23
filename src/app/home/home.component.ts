@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExerciseService } from '../services/exercise.service';
 import { HelpService } from '../services/help.service';
+import { SensorService } from '../services/sensor.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,11 @@ import { HelpService } from '../services/help.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public exerciseService: ExerciseService, public helpService: HelpService) { }
+  constructor(
+    public exerciseService: ExerciseService, 
+    public helpService: HelpService,
+    public sensorService: SensorService
+    ) { }
 
   getPresentationDone(){
     return this.exerciseService.presentationDone
@@ -23,6 +28,10 @@ export class HomeComponent implements OnInit {
     this.helpService.cancelSpeech();
     console.log('User record starts');
     this.exerciseService.activeRecord();
+    if (!this.sensorService.sharedActivation) {
+      this.sensorService.sharedActivation = true;
+      this.sensorService.sensorSwapping();
+    }
     this.helpService.speak('Record starts.'); 
   }
 

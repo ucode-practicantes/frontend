@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { UUID } from 'angular2-uuid';
 
 import { uniqueNamesGenerator } from 'unique-names-generator';
+import { HelpService } from './services/help.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +17,20 @@ export class MlServiceService {
   private events = ["running", "walking", "dribbling", "pass", "shoot"];
   public status: string = "walking";
   public predictions;
-  public name: string = uniqueNamesGenerator('-',true).split('-')[0];
+  public name: string = uniqueNamesGenerator().split('_')[2];
   // TODO: Diccionari accions progresives i accions puntuals.
 
   constructor(
     private httpClient: HttpClient,
-    private afStore: AngularFirestore
+    private afStore: AngularFirestore,
+    private helpService: HelpService
   ) {
     this.uuid = UUID.UUID();
     console.log(this.name);
     this.predictions = this.afStore.collection('preds').doc(this.uuid).valueChanges();
     this.predictions.subscribe( prediction => {
       console.log(prediction);
+      prediction && this.helpService.speak(prediction.name + " " + prediction.sentence);
     })
   }
 

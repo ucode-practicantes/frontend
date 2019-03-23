@@ -9,6 +9,8 @@ export class SensorService {
   status: boolean = false
   stopped: boolean = false;
 
+  sharedActivation: boolean = false;
+
   interval;
 
   constructor(public mlService: MlServiceService) { }

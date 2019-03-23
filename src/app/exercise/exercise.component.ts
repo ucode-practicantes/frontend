@@ -73,5 +73,6 @@ export class ExerciseComponent implements OnInit {
     this.helpService.cancelSpeech();
     console.log('User record ends');
     this.helpService.speak('Record finishes.');
+    this.exerciseService.activeHome();
   }
 }

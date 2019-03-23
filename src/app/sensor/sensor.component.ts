@@ -27,11 +27,11 @@ export class SensorComponent implements OnInit {
 
   openSensor() {
     console.log("Open sensor");
-    if (!this.activated) {
-      this.activated = true;
+    if (!this.sensorService.sharedActivation) {
+      this.sensorService.sharedActivation = true;
       this.sensorService.sensorSwapping();
     } else { 
-      this.activated = false;
+      this.sensorService.sharedActivation = false;
       this.closeSensor();
     }
   }
