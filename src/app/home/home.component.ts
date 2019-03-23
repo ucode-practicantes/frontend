@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {speech} from '../../main'
+import {speech} from '../../main';
 
 @Component({
   selector: 'app-home',

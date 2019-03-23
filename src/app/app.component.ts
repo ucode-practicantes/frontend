@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ExerciseService } from './services/exercise.service';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  constructor(public exerciseService: ExerciseService) {}
+
   onSwipeUp() {
     console.log('User record starts');
+    this.exerciseService.activeRecord();
   }
   onSwipeDown() {
     console.log('User record starts');
+    this.exerciseService.desactiveRecord();
   }
 }
