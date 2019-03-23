@@ -9,10 +9,10 @@ import Speech from 'speak-tts';
 
 export class AppComponent {
   onSwipeUp() {
-    console.log('UP');
+    console.log('SWIPE UP');
   }
   onSwipeDown() {
-    console.log('DOWN');
+    console.log('SWIPE DOWN');
   }
 }
 
@@ -25,7 +25,7 @@ export enum ScreenAction {
 export var currentScreenAction:ScreenAction = ScreenAction.stop;
 
 export function setCurrentScreenAction(action:ScreenAction){
-  currentScreenAction = action;
+  //currentScreenAction = action;
 }
 
 export const speech = new Speech()
@@ -46,3 +46,5 @@ speech.init(
 }).catch(e => {
     console.error("An error occured while initializing : ", e)
 })
+
+
