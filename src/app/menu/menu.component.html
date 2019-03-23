@@ -2,7 +2,8 @@
     <app-home *ngIf="homeStatus"></app-home>
     <app-exercise *ngIf="exerciseStatus"></app-exercise>
     <app-sensor *ngIf="sensorStatus"></app-sensor>
-    <img class="unselect" src="../../assets/images/soccer-player.svg" alt="soccer-player" style="max-height: 100em; position:absolute; bottom:0; left:0; z-index:2">
+    <img *ngIf="!sensorStatus" class="unselect" src="../../assets/images/soccer-player.svg" alt="soccer-player" style="max-height: 100em; position:absolute; bottom:0; left:0">
+    <img *ngIf="sensorStatus" class="unselect" src="../../assets/images/female-soccer.svg" alt="soccer-female-player" style="max-height: 25em; position: absolute; bottom:3em; left:12vw;">
     <app-info class="info-section"></app-info>
 </div>
 

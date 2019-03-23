@@ -11,12 +11,22 @@ import { UUID } from 'angular2-uuid';
 export class MlServiceService {
   private API_URL = environment.api;
   private uuid: string;
-  private events = ["running", "walking","rightPass","leftPass","shootRight","shootLeft"];
+  private events = ["running", "walking", "dribbling", "pass", "shoot"];
+  public status: string = "walking";
+  public predictions;
   // TODO: Diccionari accions progresives i accions puntuals.
 
-  constructor(private httpClient: HttpClient,
-              private afStore: AngularFirestore) {
+  constructor(
+    private httpClient: HttpClient,
+    private afStore: AngularFirestore
+  ) {
     this.uuid = UUID.UUID();
+    alert(this.uuid);
+    this.predictions = this.afStore.collection('preds').doc(this.uuid).valueChanges();
+    this.predictions.subscribe( prediction => {
+      console.log(prediction);
+      alert(prediction);
+    })
   }
 
   public helloWord(): Observable<any> {
@@ -25,12 +35,15 @@ export class MlServiceService {
 
   public uploadPos() {
     navigator.geolocation.getCurrentPosition((pos: Position) => {
-      this.afStore.collection("data/" + this.uuid + "/uploads").add({
+      console.log(this.status);
+      this.afStore.collection(`uploads`).add({
         pos: {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude
-        }, 
-        event: ""
+        },
+        id: this.uuid,
+        event: this.status,
+        time: new Date().getTime()
       });
     });
   }
