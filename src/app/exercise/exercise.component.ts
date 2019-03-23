@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { speech, AppComponent } from '../app.component'
 import { ExerciseService } from '../services/exercise.service';
+import { MlServiceService } from '../ml-service.service';
+
 
 @Component({
   selector: 'app-exercise',
@@ -14,7 +18,25 @@ export class ExerciseComponent implements OnInit {
 
   interval;
 
-  constructor(public exerciseService: ExerciseService) {
+  constructor(public exerciseService: ExerciseService) { }
+
+  onSwipeUp() {    
+    speech.cancel();
+    console.log('Say time');
+    var sentence:String = 'Your are playing for ';
+      if(this.hour > 0){
+        sentence += this.hour + ' hours, ';
+      } 
+      if(this.minute > 0){
+        sentence += this.minute + ' minutes, ';
+      }
+      if(this.hour>0 || this.minute>0){
+        sentence += 'and ';
+      }
+      sentence += this.second + 'seconds';
+    speech.speak({
+      text: sentence
+    }) 
   }
 
   ngOnInit() {
@@ -51,11 +73,11 @@ export class ExerciseComponent implements OnInit {
   }
 
   onSwipeDown() {
+    speech.cancel();
     console.log('User record ends');
-    this.exerciseService.desactiveRecord();
-    /*currentScreenAction = ScreenAction.swipeDown
     speech.speak({
       text: 'Record finishes.'
-    })*/
+    })
+    this.exerciseService.activeHome();
   }
 }

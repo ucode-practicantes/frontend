@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExerciseService } from '../services/exercise.service';
-import {speech, AppComponent} from '../app.component'
+import {speech, AppComponent} from '../app.component';
+import { MlServiceService } from '../ml-service.service';
 
 
 @Component({
@@ -21,25 +22,22 @@ export class HomeComponent implements OnInit {
   }
 
   onSwipeUp() {
+    speech.cancel();
     console.log('User record starts');
     this.exerciseService.activeRecord();
-    /*currentScreenAction = ScreenAction.swipeUp
     speech.speak({
       text: 'Record starts.'
-    }) */
+    }) 
   }
 
-  onSwipeDown() {
-    console.log('User record ends');
-    this.exerciseService.desactiveRecord();
-    /*currentScreenAction = ScreenAction.swipeDown
-    speech.speak({
-      text: 'Record finishes.'
-    })*/
+  onSwipeRight() {
+    console.log("SWIPE RIGHT");
+    this.exerciseService.activeSensors();
   }
 
   ngOnInit() {
     if(!this.getPresentationDone()){
+      speech.cancel();
       speech.speak({
         text: 'Hello, welcome to XXXAPP. Do you know how to use me? If you have any doubt, mantain pressed for 3 seconds. ',
       });  

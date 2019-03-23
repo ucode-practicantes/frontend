@@ -8,11 +8,18 @@ import { ExerciseService } from '../services/exercise.service';
 })
 export class MenuComponent implements OnInit {
   exerciseStatus: boolean;
+  homeStatus: boolean;
   sensorStatus: boolean;
 
   constructor(exerciseServie: ExerciseService) {
     exerciseServie.recordStatus.subscribe( status => {
       this.exerciseStatus = status;
+    });
+    exerciseServie.homeStatus.subscribe( status => {
+      this.homeStatus = status;
+    })
+    exerciseServie.sensorsStatus.subscribe( status => {
+      this.sensorStatus = status;
     });
   }
 
