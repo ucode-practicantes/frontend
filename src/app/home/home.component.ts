@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {speech} from '../app.component'
+import { ExerciseService } from '../services/exercise.service';
+import {speech, AppComponent} from '../app.component'
 
 
 @Component({
@@ -9,19 +10,22 @@ import {speech} from '../app.component'
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public exerciseService: ExerciseService) { }
 
-  ngOnInit() {}
+  getPresentationDone(){
+    return this.exerciseService.presentationDone
+  }
 
-  ngAfterViewInit(){
-    if(speech.hasBrowserSupport()) { // returns a boolean
-      console.log("speech synthesis supported")
+  makePresentation(){
+    this.exerciseService.makePresentation()
+  }
+
+  ngOnInit() {
+    if(!this.getPresentationDone()){
       speech.speak({
         text: 'Hello, welcome to XXXAPP. Do you know how to use me? If you have any doubt, mantain pressed for 3 seconds. ',
-      })     
-
-    }else{
-      console.log("speech synthesis supported")
+      });  
+      this.makePresentation();
     }
   }
 }
