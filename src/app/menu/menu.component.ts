@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ExerciseService } from '../services/exercise.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  exerciseStatus: boolean;
 
-  constructor() { }
+  constructor(exerciseServie: ExerciseService) {
+    exerciseServie.recordStatus.subscribe( status => {
+      this.exerciseStatus = status;
+    });
+  }
 
   ngOnInit() {
   }
-
 }

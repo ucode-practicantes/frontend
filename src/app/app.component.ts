@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ExerciseService } from './services/exercise.service';
 import Speech from 'speak-tts';
 
 @Component({
@@ -8,13 +9,18 @@ import Speech from 'speak-tts';
 })
 
 export class AppComponent {
+
+  constructor(public exerciseService: ExerciseService) {}
+
   onSwipeUp() {
-    console.log('SWIPE UP');
+    console.log('User record starts');
+    this.exerciseService.activeRecord();
     currentScreenAction = ScreenAction.swipeUp
   }
   onSwipeDown() {
-    console.log('SWIPE DOWN');
-    currentScreenAction = ScreenAction.swipeUp
+    console.log('User record ends');
+    this.exerciseService.desactiveRecord();
+    currentScreenAction = ScreenAction.swipeDown
   }
 }
 
