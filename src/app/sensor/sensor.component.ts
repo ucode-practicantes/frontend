@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExerciseService } from '../services/exercise.service';
 
 @Component({
   selector: 'app-sensor',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SensorComponent implements OnInit {
 
-  constructor() { }
+  constructor(public exerciseService: ExerciseService) { }
 
   ngOnInit() {
   }
 
+  onSwipeLeft() {
+    this.exerciseService.activeHome();
+  }
 }
