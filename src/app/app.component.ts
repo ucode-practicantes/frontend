@@ -21,7 +21,8 @@ export class AppComponent {
   }
 
   onPress(){
-    speech.cancel();
+    helpDisplayed = true;
+    cancelSpeech();
     console.log('User presses');
     speech.speak({
       text: 'Now you are in the help menu. \
@@ -30,6 +31,13 @@ export class AppComponent {
       //TODO TUTORIAL
     })  
   }
+}
+
+export var helpDisplayed = false;
+
+export function cancelSpeech(){
+  speech.cancel();
+  helpDisplayed = false;
 }
 
 export const speech = new Speech()
