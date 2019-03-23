@@ -35,7 +35,9 @@ export class HelpService {
     this.speech.speak({
       text: 'Now you are in the help menu. \
       To start recording, swipe up your finger on the screen. \
-      To finish recording, swipe down your finger on the screen.',
+      To finish recording, swipe down your finger on the screen.\
+      When you are playing, you can get the time you\'ve spent swiping up;\
+      you can stop the time swiping right and resume time swiping left.',
       listeners: {
         onend: () => {
           console.log("finished");
