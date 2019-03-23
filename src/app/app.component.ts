@@ -15,7 +15,7 @@ export class AppComponent {
     this.exerciseService.activeRecord();
   }
   onSwipeDown() {
-    console.log('User record starts');
+    console.log('User record ends');
     this.exerciseService.desactiveRecord();
   }
 }
