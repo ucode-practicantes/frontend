@@ -8,9 +8,17 @@ import {speech, AppComponent} from '../app.component'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent extends AppComponent implements OnInit {
 
-  constructor(public exerciseService: ExerciseService) { }
+  constructor(public exerciseService: ExerciseService) { super(exerciseService); }
+
+  onSwipeUp() {
+    console.log('User record starts');
+    this.exerciseService.activeRecord();
+    speech.speak({
+      text: 'Record starts.'
+    }) 
+  }
 
   getPresentationDone(){
     return this.exerciseService.presentationDone

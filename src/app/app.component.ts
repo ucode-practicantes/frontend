@@ -8,18 +8,12 @@ import Speech from 'speak-tts';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export abstract class AppComponent {
 
   constructor(public exerciseService: ExerciseService) {}
 
-  onSwipeUp() {
-    console.log('User record starts');
-    this.exerciseService.activeRecord();
-    currentScreenAction = ScreenAction.swipeUp
-    speech.speak({
-      text: 'Record starts.'
-    }) 
-  }
+  abstract onSwipeUp();
+
   onSwipeDown() {
     console.log('User record ends');
     this.exerciseService.desactiveRecord();
