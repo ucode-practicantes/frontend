@@ -1,0 +1,15 @@
+@import "../../styles.scss";
+
+.title {
+  margin-top: 20vh;
+}
+
+.title-text {
+  color: $white;
+}
+
+.info-section {
+  position: absolute;
+  bottom: .3em;
+  right: .3em;
+}
