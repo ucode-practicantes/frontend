@@ -17,13 +17,18 @@ import { MenuComponent } from './menu/menu.component';
 import { HammerConfig } from '../assets/config/hammer-config';
 import { ExerciseComponent } from './exercise/exercise.component';
 
+import { MatDialogModule } from '@angular/material';
+import { ModalComponent } from './modal/modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     InfoComponent,
     MenuComponent,
-    ExerciseComponent
+    ExerciseComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -31,12 +36,15 @@ import { ExerciseComponent } from './exercise/exercise.component';
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: HAMMER_GESTURE_CONFIG,
     useClass: HammerConfig
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }

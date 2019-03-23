@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { speech, cancelSpeech } from '../app.component'
 import { ExerciseService } from '../services/exercise.service';
+import { HelpService } from '../services/help.service';
 
 
 @Component({
@@ -15,10 +15,11 @@ export class ExerciseComponent implements OnInit {
 
   interval;
 
-  constructor(public exerciseService: ExerciseService) { }
+  constructor(public exerciseService: ExerciseService,
+    public helpService: HelpService) { }
 
   onSwipeUp() {    
-    cancelSpeech();
+    this.helpService.cancelSpeech();
     console.log('Say time');
     var sentence:String = 'Your are playing for ';
       if(this.hour > 0){
@@ -31,9 +32,7 @@ export class ExerciseComponent implements OnInit {
         sentence += 'and ';
       }
       sentence += this.second + 'seconds';
-    speech.speak({
-      text: sentence
-    }) 
+    this.helpService.speak(sentence); 
   }
 
   ngOnInit() {
@@ -66,11 +65,9 @@ export class ExerciseComponent implements OnInit {
   }
 
   onSwipeDown() {
-    cancelSpeech();
+    this.helpService.cancelSpeech();
     console.log('User record ends');
-    speech.speak({
-      text: 'Record finishes.'
-    })
+    this.helpService.speak('Record finishes.');
     this.exerciseService.desactiveRecord();
   }
 }

@@ -40,3 +40,9 @@ app-root {
 .title-text {
   color: $white;
 }
+
+/deep/ html.cdk-global-scrollblock body div.cdk-overlay-container div.cdk-global-overlay-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
