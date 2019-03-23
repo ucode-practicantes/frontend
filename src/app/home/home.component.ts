@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {speech, ScreenAction, getCurrentScreenAction} from '../app.component'
+import {speech} from '../app.component'
 
 
 @Component({
