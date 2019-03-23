@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { speech, AppComponent } from '../app.component'
+import { speech, cancelSpeech } from '../app.component'
 import { ExerciseService } from '../services/exercise.service';
-import { MlServiceService } from '../ml-service.service';
 
 
 @Component({
@@ -21,7 +19,7 @@ export class ExerciseComponent implements OnInit {
   constructor(public exerciseService: ExerciseService) { }
 
   onSwipeUp() {    
-    speech.cancel();
+    cancelSpeech();
     console.log('Say time');
     var sentence:String = 'Your are playing for ';
       if(this.hour > 0){
@@ -73,7 +71,7 @@ export class ExerciseComponent implements OnInit {
   }
 
   onSwipeDown() {
-    speech.cancel();
+    cancelSpeech();
     console.log('User record ends');
     speech.speak({
       text: 'Record finishes.'
