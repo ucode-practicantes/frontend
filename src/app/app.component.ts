@@ -26,8 +26,9 @@ export class AppComponent {
     console.log('User presses');
     currentScreenAction = ScreenAction.press
     speech.speak({
-      text: 'Hello. Now you are in the help menu. To start recording, swip up your finger in the screen. \
-      To finish recording, swuip down your finger in the screen.',
+      text: 'Hello. Now you are in the help menu. \
+      To start recording, swipe up your finger on the screen. \
+      To finish recording, swipe down your finger on the screen.',
       //TODO TUTORIAL
     })  
   }
