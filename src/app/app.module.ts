@@ -1,6 +1,9 @@
-// Modules
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { environment } from './../environments/environment';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
@@ -25,7 +28,10 @@ import { ExerciseComponent } from './exercise/exercise.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [{
     provide: HAMMER_GESTURE_CONFIG,
