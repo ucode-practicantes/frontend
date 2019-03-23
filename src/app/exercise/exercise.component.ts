@@ -10,6 +10,7 @@ export class ExerciseComponent implements OnInit {
   hour: number = 0;
   minute: number = 0;
   second: number = 0;
+  stopped = false;
 
   interval;
 
@@ -38,10 +39,14 @@ export class ExerciseComponent implements OnInit {
   }
 
   resume() {
-    this.start();
+    if(this.stopped) {
+      this.stopped = false;
+      this.start();
+    }
   }
 
   stop() {
+    this.stopped = true;
     clearInterval(this.interval);
   }
 

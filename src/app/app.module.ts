@@ -16,6 +16,7 @@ import { MenuComponent } from './menu/menu.component';
 // Configs
 import { HammerConfig } from '../assets/config/hammer-config';
 import { ExerciseComponent } from './exercise/exercise.component';
+import { SensorComponent } from './sensor/sensor.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ExerciseComponent } from './exercise/exercise.component';
     HomeComponent,
     InfoComponent,
     MenuComponent,
-    ExerciseComponent
+    ExerciseComponent,
+    SensorComponent
   ],
   imports: [
     BrowserModule,

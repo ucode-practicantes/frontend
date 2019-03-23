@@ -11,6 +11,8 @@ import { UUID } from 'angular2-uuid';
 export class MlServiceService {
   private API_URL = environment.api;
   private uuid: string;
+  private events = ["running", "walking","rightPass","leftPass","shootRight","shootLeft"];
+  // TODO: Diccionari accions progresives i accions puntuals.
 
   constructor(private httpClient: HttpClient,
               private afStore: AngularFirestore) {
@@ -27,7 +29,8 @@ export class MlServiceService {
         pos: {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude
-        }
+        }, 
+        event: ""
       });
     });
   }

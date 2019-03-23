@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
       text: 'Record starts.'
     }) */
   }
+
   onSwipeDown() {
     console.log('User record ends');
     this.exerciseService.desactiveRecord();
