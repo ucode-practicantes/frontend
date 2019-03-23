@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {speech} from '../../main'
+import {speech, AppComponent, currentScreenAction, ScreenAction, setCurrentScreenAction} from '../app.component'
+
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
       speech.speak({
         text: 'Hello, welcome to XXXAPP. Do you know how to use me? Scroll up in affirmative case. Scroll down otherwise.',
       })
+      
     }else{
       console.log("speech synthesis supported")
     }
