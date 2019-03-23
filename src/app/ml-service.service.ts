@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UUID } from 'angular2-uuid';
 
+import { uniqueNamesGenerator } from 'unique-names-generator';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +16,7 @@ export class MlServiceService {
   private events = ["running", "walking", "dribbling", "pass", "shoot"];
   public status: string = "walking";
   public predictions;
+  public name: string = uniqueNamesGenerator('-',true).split('-')[0];
   // TODO: Diccionari accions progresives i accions puntuals.
 
   constructor(
@@ -21,11 +24,10 @@ export class MlServiceService {
     private afStore: AngularFirestore
   ) {
     this.uuid = UUID.UUID();
-    alert(this.uuid);
+    console.log(this.name);
     this.predictions = this.afStore.collection('preds').doc(this.uuid).valueChanges();
     this.predictions.subscribe( prediction => {
       console.log(prediction);
-      alert(prediction);
     })
   }
 
@@ -42,6 +44,7 @@ export class MlServiceService {
           lng: pos.coords.longitude
         },
         id: this.uuid,
+        name: this.name,
         event: this.status,
         time: new Date().getTime()
       });
