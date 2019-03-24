@@ -12,6 +12,7 @@ import { ModalComponent } from './modal/modal.component';
 })
 
 export class AppComponent {
+  displayed: boolean = false;
 
   fileNameDialogRef: MatDialogRef<ModalComponent>;
 
@@ -27,9 +28,12 @@ export class AppComponent {
   }
 
   onPress(){
+    if (this.displayed) {
+      return;
+    }
     console.log('User presses');
     this.helpService.cancelSpeech();
-    this.helpService.displayHelp()
+    this.helpService.displayHelp();
     this.fileNameDialogRef = this.dialog.open(ModalComponent, {
       hasBackdrop: false
     });
