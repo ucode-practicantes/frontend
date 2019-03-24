@@ -19,7 +19,7 @@ export class SensorService {
     this.interval = setInterval(() => {
       this.status ? this.sensorOff() : this.sensorOn();
       this.mlService.uploadPos();
-    }, 5000);
+    }, 1000);
   }
 
   sensorOn() {
