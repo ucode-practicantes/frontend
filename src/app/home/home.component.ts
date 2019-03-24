@@ -11,7 +11,7 @@ import { SensorService } from '../services/sensor.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    public exerciseService: ExerciseService, 
+    public exerciseService: ExerciseService,
     public helpService: HelpService,
     public sensorService: SensorService
     ) { }
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
       this.sensorService.sharedActivation = true;
       this.sensorService.sensorSwapping();
     }
-    this.helpService.speak('Record starts.'); 
+    this.helpService.speak('Record starts.');
   }
 
   onSwipeRight() {
@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     if(!this.getPresentationDone()){
       this.helpService.cancelSpeech();
-      this.helpService.speak('Hello, welcome to XXXAPP. \
-        Do you know how to use me? If you have any doubt, mantain pressed for 3 seconds. ');  
+      this.helpService.speak('Hello, welcome to Project Lazarus. \
+        Do you know how to use me? If you have any doubt, mantain pressed for 3 seconds. ');
       this.makePresentation();
     }
   }
